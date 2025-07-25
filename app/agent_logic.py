@@ -11,13 +11,15 @@ from app.roadmap_parser import get_roadmap_steps
 from app.status_tracker import get_step_status
 from app.risk_extractor import get_risks
 import difflib
-def run_agent():
-    roadmap = get_roadmap_steps("demo_data/SecOps SoW1.pdf")
-    status = get_step_status()
-    risks = get_risks([
-        "demo_data/Re_ Minutes of Meeting (MoM).eml",
-        "demo_data/RE_ Google SecOps SIEM_SOAR Fine Tuning Status.eml"
-    ])
+def run_agent(pdf_path, xlsx_path, eml_paths):
+    from app.roadmap_parser import get_roadmap_steps
+    from app.status_tracker import get_step_status
+    from app.risk_extractor import get_risks
+    import difflib
+
+    roadmap = get_roadmap_steps(pdf_path)
+    status = get_step_status(xlsx_path)
+    risks = get_risks(eml_paths)
 
     current_step = None
     for step in roadmap:
@@ -27,8 +29,6 @@ def run_agent():
             if s.lower() in ["in progress", "not valid", "pending"]:
                 current_step = step
                 break
-            
-            
 
     next_step = None
     if current_step:

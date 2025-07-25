@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadmap Analysis Report</title>
+</head>
+<body>
+  <h1>Roadmap Analysis Result</h1>
+
+  <h2>Current Step:</h2>
+  <p>{{ report.current or "Not identified" }}</p>
+
+  <h2>Next Step:</h2>
+  <p>{{ report.next or "None" }}</p>
+
+  <h2>Status:</h2>
+  <p>{{ report.status or "Unknown" }}</p>
+
+  <h2>Risks:</h2>
+  {% if report.risks and report.risks|length > 0 %}
+    <ul>
+    {% for risk in report.risks %}
+      <li>{{ risk }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No risks identified for current step.</p>
+  {% endif %}
+
+  <h2>Suggestions:</h2>
+  {% if report.suggestions %}
+    <ul>
+    {% for tip in report.suggestions %}
+      <li>{{ tip }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No suggestions available.</p>
+  {% endif %}
+
+  <h2>Full Roadmap:</h2>
+  {% if report.roadmap %}
+    <ol>
+    {% for step in report.roadmap %}
+      <li>{{ step }}</li>
+    {% endfor %}
+    </ol>
+  {% else %}
+    <p>No roadmap steps found.</p>
+  {% endif %}
+
+  <hr>
+  <a href="/">Back to Upload</a>
+</body>
+</html>

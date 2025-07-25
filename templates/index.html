@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecOps Roadmap AI Agent</title>
+</head>
+<body>
+  <h1>📁 Upload Files for Risk & Roadmap Analysis</h1>
+
+  <form action="/analyze" method="post" enctype="multipart/form-data">
+    <label for="sow_pdf">📄 SoW PDF:</label>
+    <input type="file" id="sow_pdf" name="sow_pdf" required placeholder="Select SoW PDF"><br><br>
+
+    <label for="excel_tracker">📊 Excel Tracker:</label>
+    <input type="file" id="excel_tracker" name="excel_tracker" required placeholder="Upload Excel"><br><br>
+
+    <label for="email1">📧 Email File 1:</label>
+    <input type="file" id="email1" name="email1" required placeholder="Upload .eml"><br><br>
+
+    <label for="email2">📧 Email File 2:</label>
+    <input type="file" id="email2" name="email2" required placeholder="Upload .eml"><br><br>
+
+    <button type="submit">Analyze</button>
+  </form>
+</body>
+</html>
